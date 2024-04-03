@@ -3,7 +3,6 @@ package com.sptek.demo.ch03.di04;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
@@ -93,7 +92,8 @@ class Engine {
 }
 
 @Component
-@Conditional(OsCondition.class)
+//@Conditional(OsCondition.class)
+@Conditional(FalseCondition.class)
 class Door {
     public String toString() {
         return "Door{}";
@@ -104,6 +104,13 @@ class TrueCondition implements Condition {
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         return true;
+    }
+}
+
+class FalseCondition implements Condition {
+    @Override
+    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+        return false;
     }
 }
 

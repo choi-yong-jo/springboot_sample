@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 @Component
-class Car {
+class MyCar {
 
     // 1. Resource
 //    @Resource(name = "superEngine")
@@ -26,7 +26,7 @@ class Car {
     @Autowired
     Door door;
 
-    public Car() {}
+    public MyCar() {}
 
 //    @Autowired
 //    public Car(Engine[] engine, Door door) {
@@ -57,7 +57,7 @@ class Door {}
 public class Main {
     public static void main(String[] args) {
         ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
-        Car car = ac.getBean("car", Car.class);      // byName 객체을 조회
+        MyCar car = ac.getBean("car", MyCar.class);      // byName 객체을 조회
         System.out.println("car = " + car);
 
 //        Engine engine = ac.getBean(Engine.class);
