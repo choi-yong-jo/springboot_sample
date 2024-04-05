@@ -31,10 +31,10 @@ public class Demo2Application implements CommandLineRunner {
         EntityTransaction tx = em.getTransaction();
 
         User user = new User();
-        user.setId("aaa");
-        user.setPassword("1234");
+        user.setId("cyjo");
+        user.setPassword("1207");
         user.setName("Choi");
-        user.setEmail("aaa@gmail.com");
+        user.setEmail("cyjo1207@gmail.com");
         user.setInDate(new Date());
         user.setUpDate(new Date());
 
