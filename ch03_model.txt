@@ -1,0 +1,3 @@
+car=com.sptek.demo.ch03.di01.SportCar
+engine=com.sptek.demo.ch03.di01.Engine
+door=com.sptek.demo.ch03.di01.Door
