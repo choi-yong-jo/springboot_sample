@@ -23,7 +23,7 @@ class BoardRepositoryTest2 {
     public void testData(){
         for(int i=0; i<100; i++) {
             Board board = new Board();
-            board.setBno(i);
+            board.setBno((long) i);
             board.setTitle("title" + i);
             board.setContent("content" + i);
             board.setWriter("writer" + (i%5));

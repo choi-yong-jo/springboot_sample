@@ -1,16 +1,17 @@
 package com.sptek.demo2;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name="Member")
+@Table(name="Account")
 public class User {
 
     @Id
+    @Column(name = "user_id")
     private String id;
 
     private String password;
@@ -23,6 +24,11 @@ public class User {
 
     private Date upDate;
 
+    // FatchType.EAGER - 두 엔티티의 정보를 같이 가져오는 것(join)
+    // FatchType.LAZY - 따로 가져오는 것. 나중에 getList(), default
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)      // 하나의 User의 여러 개 Board
+    List<Board> list = new ArrayList<>();
+
     @Override
     public String toString() {
         return "User{" +
@@ -32,6 +38,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", inDate=" + inDate +
                 ", upDate=" + upDate +
+                ", list=" + list +
                 '}';
     }
 
@@ -81,5 +88,13 @@ public class User {
 
     public void setUpDate(Date upDate) {
         this.upDate = upDate;
+    }
+
+    public List<Board> getList() {
+        return list;
+    }
+
+    public void setList(List<Board> list) {
+        this.list = list;
     }
 }

@@ -1,8 +1,8 @@
 package com.sptek.demo2;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +19,7 @@ public class Demo2Application implements CommandLineRunner {
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(Demo2Application.class);
-        app.setWebApplicationType(WebApplicationType.NONE);
+//        app.setWebApplicationType(WebApplicationType.NONE);
         app.run(args);
 //        SpringApplication.run(Demo2Application.class, args);
     }

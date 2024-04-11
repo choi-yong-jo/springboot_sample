@@ -17,7 +17,7 @@ class BoardRepositoryTest {
     @Test
     public void insertTest(){
         Board board = new Board();
-        board.setBno(1);
+        board.setBno(1L);
         board.setTitle("Test Title");
         board.setContent("This is Test");
         board.setWriter("aaa");

@@ -1,6 +1,6 @@
 package com.sptek.demo2;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ public class Board {
 
     @Id
     @GeneratedValue     // 자동 번호 증가
-    private int bno;   // 게시물 번호
+    private Long bno;   // 게시물 번호
 
     private String title;
 
@@ -18,6 +18,10 @@ public class Board {
     private String content;
 
     private int viewCnt;
+
+    @ManyToOne      // 여러 개 board의 하나의 User. FK 자동 생성
+    @JoinColumn(name="user_id", nullable = false)
+    private User user;
 
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date inDate;
@@ -33,16 +37,17 @@ public class Board {
                 ", writer='" + writer + '\'' +
                 ", content='" + content + '\'' +
                 ", viewCnt=" + viewCnt +
+//                ", user=" + user +
                 ", inDate=" + inDate +
                 ", upDate=" + upDate +
                 '}';
     }
 
-    public int getBno() {
+    public Long getBno() {
         return bno;
     }
 
-    public void setBno(int bno) {
+    public void setBno(Long bno) {
         this.bno = bno;
     }
 
@@ -76,6 +81,14 @@ public class Board {
 
     public void setViewCnt(int viewCnt) {
         this.viewCnt = viewCnt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getInDate() {
