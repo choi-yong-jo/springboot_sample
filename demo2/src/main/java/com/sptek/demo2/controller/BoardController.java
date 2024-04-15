@@ -66,6 +66,18 @@ public class BoardController {
         return new ResponseEntity<>(resource, HttpStatus.OK);
     }
 
+    @RequestMapping("deleteFile")
+    public ResponseEntity<String> deleteFile(String fileName){
+        System.out.println("fileName = " + fileName);
+
+        File file = new File(uploadPath + fileName);
+        if(file.delete() == true){
+            return new ResponseEntity<>("success file deleted " + fileName, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
     @GetMapping("/list")
     public String getList(Model model){
