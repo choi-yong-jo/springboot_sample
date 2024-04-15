@@ -9,10 +9,29 @@
     <script>
         let fileList = [];
 
+        function deleteFile(fileName){
+            $.ajax({
+                url : '/board/deleteFile',
+                data : {fileName : fileName},
+                dataType : 'text',
+                type : 'POST',
+                success : function (result) {
+                    alert(result);
+
+                    // 파일 목록에서 삭제된 파일을 제거
+                    fileList = fileList.filter(f => f!=fileName)   // 해당 파일을 제외한 파일만 남긴다.
+                    showFileList();
+                }
+            })
+        }
+
         function showFileList() {
             let tmp = ``;       // 따옴표 아니고 빽틱 숫자 1키 옆에 있는 것
             for(file of fileList){
-                tmp += `<li><a href="/board/download?filename=${file}">${file}</a></li>`
+                console.log(file);
+                tmp += `<li><a href="/board/download?fileName=${file}">${file}</a>
+                           <button id="deleteBtn" onclick="deleteFile('${file}')">삭제</button>
+                        </li>`
             }
             $('#fileList ul').html(tmp);
         }
